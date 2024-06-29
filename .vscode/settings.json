@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "2DSideScroller.sln"
+    "dotnet.defaultSolution": "2DSideScroller.sln",
+    "editor.fontSize": 14
 }
