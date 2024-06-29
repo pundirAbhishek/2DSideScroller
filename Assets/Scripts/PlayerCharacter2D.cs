@@ -11,15 +11,33 @@ public class PlayerCharacter2D : MonoBehaviour
     public Rigidbody2D rigidBody2D;
     bool isGrounded = true;
 
+    bool isShootTimerInProgress = false;
+    float shootTimer = 0.2f;
+    public Transform positionRight; 
+    public Transform positionLeft;
+    public GameObject bullet; 
+
     // Start is called before the first frame update
     void Start()
     {
         isGrounded = true;
+        isShootTimerInProgress = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isShootTimerInProgress)
+        {
+            shootTimer -= Time.deltaTime;
+        }
+        if(shootTimer <= 0)
+        {
+            isShootTimerInProgress = false;
+            animator.SetBool("isShooting", false);
+            shootTimer = 0.2f;
+        }
+
         Movement();
         if(isGrounded)
         {
@@ -41,7 +59,11 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            animator.SetBool("isShooting", true);
+            if(!isShootTimerInProgress)
+            {
+                animator.SetBool("isShooting", true);
+                isShootTimerInProgress = true;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
