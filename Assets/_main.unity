@@ -351,6 +351,7 @@ MonoBehaviour:
   positionRight: {fileID: 2096194800}
   positionLeft: {fileID: 2029836946}
   bullet: {fileID: 2684136991606534855, guid: 387afec7b974d4bf5a880f20366b87ed, type: 3}
+  shotSpeed: 20
 --- !u!95 &958310223
 Animator:
   serializedVersion: 5
@@ -603,7 +604,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: -2.6819236, z: -0.014442804}
-  m_LocalScale: {x: 15.9775, y: 0.975, z: 1}
+  m_LocalScale: {x: 21.369905, y: 0.975, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

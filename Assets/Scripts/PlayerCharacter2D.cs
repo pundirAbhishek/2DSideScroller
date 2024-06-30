@@ -16,6 +16,7 @@ public class PlayerCharacter2D : MonoBehaviour
     public Transform positionRight; 
     public Transform positionLeft;
     public GameObject bullet; 
+    public float shotSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,21 @@ public class PlayerCharacter2D : MonoBehaviour
         {
             if(!isShootTimerInProgress)
             {
+                // In order to shoot in the correct direction we first need to figure out in which direction the character is facing,
+                // which we can figure our if the character is flipped or not. 
+                if(!sr.flipX)
+                {
+                    // facing right
+                    GameObject newBullet = Instantiate(bullet, positionRight.position, transform.rotation);
+                    newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * -1 * shotSpeed; 
+                }
+                else
+                {
+                    // facing left
+                   GameObject newBullet = Instantiate(bullet, positionLeft.position, transform.rotation);
+                    newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * shotSpeed; 
+                }
+
                 animator.SetBool("isShooting", true);
                 isShootTimerInProgress = true;
             }
